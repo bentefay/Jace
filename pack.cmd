@@ -1,0 +1,1 @@
+dotnet pack ".\Jace" -c release -o ../nuget
