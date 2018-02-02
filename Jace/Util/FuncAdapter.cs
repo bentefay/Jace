@@ -61,7 +61,7 @@ namespace Jace.Util
         //    assemblyBuilder.Save(@"test.dll");
         //}
 
-#if false // !NETFX_CORE // This path is more efficient, but method.DefineParameter does not exist anymore. If you want to try and fix this, add System.Reflection.Emit.Lightweight.
+#if !NETFX_CORE
         private Delegate GenerateDelegate(Jace.Execution.ParameterInfo[] parameterArray,
             Func<Dictionary<string, double>, double> function)
         {
@@ -76,11 +76,12 @@ namespace Jace.Util
 
             GenerateMethodBody(generator, parameterArray, function);
 
-            for (int i = 0; i < parameterArray.Length; i++)
-            {
-                Jace.Execution.ParameterInfo parameter = parameterArray[i];
-                method.DefineParameter((i + 1), ParameterAttributes.In, parameter.Name);
-            }
+            // This code no longer compiles in .netstandard. Is it necessary?
+            //for (int i = 0; i < parameterArray.Length; i++)
+            //{
+            //    Jace.Execution.ParameterInfo parameter = parameterArray[i];
+            //    method.DefineParameter((i + 1), ParameterAttributes.In, parameter.Name);
+            //}
 
             return method.CreateDelegate(delegateType, new FuncAdapterArguments(function));
         }
