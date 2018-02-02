@@ -8,3 +8,4 @@ packages/*
 !packages/repositories.config
 *.zip
 *.userprefs
+.vs/

@@ -61,7 +61,7 @@ namespace Jace.Util
         //    assemblyBuilder.Save(@"test.dll");
         //}
 
-#if !NETFX_CORE
+#if false // !NETFX_CORE // This path is more efficient, but method.DefineParameter does not exist anymore. If you want to try and fix this, add System.Reflection.Emit.Lightweight.
         private Delegate GenerateDelegate(Jace.Execution.ParameterInfo[] parameterArray,
             Func<Dictionary<string, double>, double> function)
         {
