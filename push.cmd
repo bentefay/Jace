@@ -1,0 +1,1 @@
+dotnet nuget push ".\nuget\*" -s=http://tfs:82/nuget/GlobalRoam -k=tfs:{passwordinkeypass}
